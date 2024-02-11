@@ -1,9 +1,11 @@
 package br.com.phricardo.bytebot.listeners.commands;
 
 import static java.lang.String.format;
+import static java.util.Arrays.stream;
+import static java.util.regex.Pattern.quote;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.javacord.api.entity.message.Message;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
@@ -11,15 +13,22 @@ import org.javacord.api.listener.message.MessageCreateListener;
 public abstract class AbstractMessageCommand implements MessageCreateListener {
 
   private static final String prefix = "!";
+  private static final String commandPartsRegex = "[^a-zA-Z0-9" + quote(prefix) + "]";
+
   private final String command;
 
   @Override
   public void onMessageCreate(final MessageCreateEvent event) {
-    final Message message = event.getMessage();
-    final Boolean isValidCommand =
-        (Boolean) message.getContent().equalsIgnoreCase(format("%s%s", prefix, command));
-    if (isValidCommand) this.execute(event);
+    final String messageContent = event.getMessageContent();
+    final String prefixCommand = format("%s%s", prefix, command);
+    final Boolean isValidCommand = (Boolean) messageContent.startsWith(prefixCommand);
+    final List<String> commandParts =
+        stream(messageContent.split("\\s+"))
+            .map(part -> part.replaceAll(commandPartsRegex, ""))
+            .toList();
+
+    if (isValidCommand) this.execute(event, commandParts);
   }
 
-  protected abstract void execute(final MessageCreateEvent event);
+  protected abstract void execute(final MessageCreateEvent event, List<String> commandParts);
 }

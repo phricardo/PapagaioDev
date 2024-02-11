@@ -2,6 +2,7 @@ package br.com.phricardo.bytebot.listeners.commands;
 
 import static br.com.phricardo.bytebot.utils.Constants.CUSTOM_COLOR;
 
+import java.util.List;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
@@ -9,14 +10,14 @@ import org.javacord.api.event.message.MessageCreateEvent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ServerInfoCommandListenerAbstract extends AbstractMessageCommand {
+public class ServerInfoCommandListener extends AbstractMessageCommand {
 
-  public ServerInfoCommandListenerAbstract() {
+  public ServerInfoCommandListener() {
     super("serverInfo");
   }
 
   @Override
-  protected void execute(final MessageCreateEvent event) {
+  protected void execute(final MessageCreateEvent event, List<String> commandParts) {
     event
         .getServer()
         .ifPresent(

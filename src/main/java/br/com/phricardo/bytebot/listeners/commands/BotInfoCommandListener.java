@@ -2,19 +2,20 @@ package br.com.phricardo.bytebot.listeners.commands;
 
 import static br.com.phricardo.bytebot.utils.Constants.CUSTOM_COLOR;
 
+import java.util.List;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BotInfoCommandListenerAbstract extends AbstractMessageCommand {
+public class BotInfoCommandListener extends AbstractMessageCommand {
 
-  public BotInfoCommandListenerAbstract() {
+  public BotInfoCommandListener() {
     super("botInfo");
   }
 
   @Override
-  protected void execute(final MessageCreateEvent event) {
+  protected void execute(final MessageCreateEvent event, List<String> commandParts) {
     // final var userAuthor = event.getMessageAuthor();
     final var bot = event.getApi().getYourself();
     final var botName = bot.getName();
