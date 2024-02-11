@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.listeners;
+package br.com.phricardo.javadiscordbot.listeners.commands;
 
 import br.com.phricardo.javadiscordbot.commands.PingCommand;
 import lombok.RequiredArgsConstructor;

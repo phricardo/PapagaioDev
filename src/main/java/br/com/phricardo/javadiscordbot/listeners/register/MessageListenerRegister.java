@@ -1,6 +1,6 @@
 package br.com.phricardo.javadiscordbot.listeners.register;
 
-import br.com.phricardo.javadiscordbot.listeners.PingCommandListener;
+import br.com.phricardo.javadiscordbot.listeners.commands.PingCommandListener;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.javacord.api.DiscordApi;
