@@ -1,5 +1,6 @@
 package br.com.phricardo.bytebot.listeners.register;
 
+import br.com.phricardo.bytebot.listeners.commands.BotInfoCommandListener;
 import br.com.phricardo.bytebot.listeners.commands.PingCommandListener;
 import br.com.phricardo.bytebot.listeners.commands.ServerInfoCommandListener;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +19,13 @@ public class MessageListenerRegister {
   // Commands
   private final PingCommandListener pingCommandListener;
   private final ServerInfoCommandListener serverInfoCommandListener;
+  private final BotInfoCommandListener botInfoCommandListener;
 
   @Bean
   public DiscordApi register() {
     discordApi.addListener(pingCommandListener);
     discordApi.addListener(serverInfoCommandListener);
+    discordApi.addListener(botInfoCommandListener);
     return discordApi;
   }
 }
