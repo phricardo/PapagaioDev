@@ -1,8 +1,8 @@
 package br.com.phricardo.bytebot.listeners.register;
 
-import br.com.phricardo.bytebot.listeners.commands.BotInfoCommandListener;
-import br.com.phricardo.bytebot.listeners.commands.PingCommandListener;
-import br.com.phricardo.bytebot.listeners.commands.ServerInfoCommandListener;
+import br.com.phricardo.bytebot.listeners.commands.BotInfoCommandListenerAbstract;
+import br.com.phricardo.bytebot.listeners.commands.PingCommandListenerAbstract;
+import br.com.phricardo.bytebot.listeners.commands.ServerInfoCommandListenerAbstract;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.javacord.api.DiscordApi;
@@ -17,9 +17,9 @@ public class MessageListenerRegister {
   private final DiscordApi discordApi;
 
   // Commands
-  private final PingCommandListener pingCommandListener;
-  private final ServerInfoCommandListener serverInfoCommandListener;
-  private final BotInfoCommandListener botInfoCommandListener;
+  private final PingCommandListenerAbstract pingCommandListener;
+  private final ServerInfoCommandListenerAbstract serverInfoCommandListener;
+  private final BotInfoCommandListenerAbstract botInfoCommandListener;
 
   @Bean
   public DiscordApi register() {

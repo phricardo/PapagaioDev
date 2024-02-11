@@ -2,26 +2,19 @@ package br.com.phricardo.bytebot.listeners.commands;
 
 import static br.com.phricardo.bytebot.utils.Constants.CUSTOM_COLOR;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.message.MessageCreateEvent;
-import org.javacord.api.listener.message.MessageCreateListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
-public class BotInfoCommandListener implements MessageCreateListener {
+public class BotInfoCommandListenerAbstract extends AbstractMessageCommand {
 
-  @Override
-  public void onMessageCreate(final MessageCreateEvent event) {
-    final Message message = event.getMessage();
-    final Boolean isValidCommand = (Boolean) message.getContent().equalsIgnoreCase("!botInfo");
-    if (isValidCommand) this.execute(event);
+  public BotInfoCommandListenerAbstract() {
+    super("botInfo");
   }
 
-  private void execute(@NonNull final MessageCreateEvent event) {
+  @Override
+  protected void execute(final MessageCreateEvent event) {
     // final var userAuthor = event.getMessageAuthor();
     final var bot = event.getApi().getYourself();
     final var botName = bot.getName();

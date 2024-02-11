@@ -2,28 +2,21 @@ package br.com.phricardo.bytebot.listeners.commands;
 
 import static br.com.phricardo.bytebot.utils.Constants.CUSTOM_COLOR;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.MessageCreateEvent;
-import org.javacord.api.listener.message.MessageCreateListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
-public class ServerInfoCommandListener implements MessageCreateListener {
+public class ServerInfoCommandListenerAbstract extends AbstractMessageCommand {
 
-  @Override
-  public void onMessageCreate(MessageCreateEvent event) {
-    final Message message = event.getMessage();
-    final Boolean isValidCommand = (Boolean) message.getContent().equalsIgnoreCase("!serverInfo");
-    if (isValidCommand) this.execute(event);
+  public ServerInfoCommandListenerAbstract() {
+    super("serverInfo");
   }
 
-  private void execute(@NonNull final MessageCreateEvent event) {
+  @Override
+  protected void execute(final MessageCreateEvent event) {
     event
         .getServer()
         .ifPresent(
