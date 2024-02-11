@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.configurations;
+package br.com.phricardo.javadiscordbot.services;
 
 import static java.util.concurrent.Executors.newScheduledThreadPool;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -8,23 +8,20 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.activity.ActivityType;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 @Slf4j
-@Configuration
+@Service
 @RequiredArgsConstructor
-public class BotActivityConfig {
+public class ActivityStatusService {
 
   private final DiscordApi discordApi;
   private final String[] activityTexts = {"phricardo.com.br", "@phricardorj", "Java"};
   private final ActivityType[] activityTypes = {LISTENING, STREAMING, WATCHING};
 
-  @Bean
-  public DiscordApi setActivity() {
+  public void setActivity() {
     discordApi.updateActivity(activityTypes[0], activityTexts[0]);
     newScheduledThreadPool(1).scheduleAtFixedRate(this::updateActivity, 30, 30, SECONDS);
-    return discordApi;
   }
 
   private void updateActivity() {

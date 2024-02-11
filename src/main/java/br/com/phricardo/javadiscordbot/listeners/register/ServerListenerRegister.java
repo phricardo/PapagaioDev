@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.configurations;
+package br.com.phricardo.javadiscordbot.listeners.register;
 
 import static java.lang.String.format;
 
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class BotServerListenersConfig {
+public class ServerListenerRegister {
 
   private final DiscordApi discordApi;
   private static final long serverWelcomeChannelId = 968360066396856373L;

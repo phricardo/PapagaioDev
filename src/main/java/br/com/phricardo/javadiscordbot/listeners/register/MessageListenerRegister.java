@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.configurations;
+package br.com.phricardo.javadiscordbot.listeners.register;
 
 import br.com.phricardo.javadiscordbot.listeners.PingCommandListener;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class BotMessageListenersConfig {
+public class MessageListenerRegister {
 
   private final DiscordApi discordApi;
 

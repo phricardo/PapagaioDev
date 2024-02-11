@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 
 @Slf4j
 @Configuration
-public class BotConfig {
+public class DiscordApiConfig {
 
   @Value("${discord.bot.token}")
   private String SECURITY_TOKEN;
