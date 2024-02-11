@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.activity.ActivityType;
 import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
 
 @Slf4j
 @Service
@@ -19,9 +20,11 @@ public class ActivityStatusService {
   private final String[] activityTexts = {"phricardo.com.br", "@phricardorj", "Java"};
   private final ActivityType[] activityTypes = {LISTENING, STREAMING, WATCHING};
 
-  public void setActivity() {
+  @Bean
+  public DiscordApi setActivity() {
     discordApi.updateActivity(activityTypes[0], activityTexts[0]);
     newScheduledThreadPool(1).scheduleAtFixedRate(this::updateActivity, 30, 30, SECONDS);
+    return discordApi;
   }
 
   private void updateActivity() {
