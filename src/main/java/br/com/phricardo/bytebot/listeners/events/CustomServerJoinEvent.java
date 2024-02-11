@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.listeners.events;
+package br.com.phricardo.bytebot.listeners.events;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

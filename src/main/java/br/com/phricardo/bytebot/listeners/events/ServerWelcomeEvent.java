@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.listeners.events;
+package br.com.phricardo.bytebot.listeners.events;
 
 import static java.lang.String.format;
 

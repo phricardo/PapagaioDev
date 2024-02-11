@@ -1,7 +1,7 @@
-package br.com.phricardo.javadiscordbot.listeners.register;
+package br.com.phricardo.bytebot.listeners.register;
 
-import br.com.phricardo.javadiscordbot.listeners.events.CustomServerJoinEvent;
-import br.com.phricardo.javadiscordbot.listeners.events.ServerWelcomeEvent;
+import br.com.phricardo.bytebot.listeners.events.CustomServerJoinEvent;
+import br.com.phricardo.bytebot.listeners.events.ServerWelcomeEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.javacord.api.DiscordApi;

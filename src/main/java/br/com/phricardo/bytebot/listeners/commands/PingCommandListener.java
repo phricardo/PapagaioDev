@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.listeners.commands;
+package br.com.phricardo.bytebot.listeners.commands;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

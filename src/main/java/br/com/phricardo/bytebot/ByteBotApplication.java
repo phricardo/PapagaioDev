@@ -1,12 +1,12 @@
-package br.com.phricardo.javadiscordbot;
+package br.com.phricardo.bytebot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaDiscordBotApplication {
+public class ByteBotApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(JavaDiscordBotApplication.class, args);
+    SpringApplication.run(ByteBotApplication.class, args);
   }
 }

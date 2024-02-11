@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.configurations;
+package br.com.phricardo.bytebot.configurations;
 
 import lombok.extern.slf4j.Slf4j;
 import org.javacord.api.DiscordApi;

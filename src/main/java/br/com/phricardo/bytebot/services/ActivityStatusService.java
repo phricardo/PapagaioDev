@@ -1,4 +1,4 @@
-package br.com.phricardo.javadiscordbot.services;
+package br.com.phricardo.bytebot.services;
 
 import static java.util.concurrent.Executors.newScheduledThreadPool;
 import static java.util.concurrent.TimeUnit.SECONDS;
