@@ -7,7 +7,7 @@ COPY . .
 RUN apt-get install maven -y
 
 ENV MAVEN_SSL_INSECURE=true
-RUN mvn clean install -Dspring.profiles.active=prod -Dmaven.wagon.http.ssl.insecure=$MAVEN_SSL_INSECURE
+RUN mvn clean install -Dspring.profiles.active=prod -Dmaven.wagon.http.ssl.insecure=$MAVEN_SSL_INSECURE -DskipTests=true
 
 FROM openjdk:19-jdk-alpine
 

@@ -1,0 +1,12 @@
+version: "3"
+services:
+  byte-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: byte-bot
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
