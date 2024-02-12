@@ -13,15 +13,13 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.entity.user.UserStatus;
 import org.javacord.api.event.message.MessageCreateEvent;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class UserInfoCommandListener extends AbstractMessageCommand {
 
-  @Value("${discord.bot.api}")
-  private String BASE_URL_HTTP_API;
+  private static final String BASE_URL_HTTP_API = "https://bytebot.phricardo.com.br";
 
   public UserInfoCommandListener() {
     super("userInfo");

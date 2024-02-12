@@ -1,4 +1,3 @@
 discord:
   bot:
     token: ${DISCORD_BOT_TOKEN}
-    api: https://bytebot.phricardo.com.br
