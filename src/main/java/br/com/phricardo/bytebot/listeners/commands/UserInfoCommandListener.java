@@ -2,11 +2,15 @@ package br.com.phricardo.bytebot.listeners.commands;
 
 import static br.com.phricardo.bytebot.utils.Constants.CUSTOM_COLOR;
 import static java.lang.String.valueOf;
+import static java.time.LocalDateTime.ofInstant;
+import static java.time.ZoneId.systemDefault;
+import static java.time.format.DateTimeFormatter.ofPattern;
 
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
+import org.javacord.api.entity.user.UserStatus;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +31,9 @@ public class UserInfoCommandListener extends AbstractMessageCommand {
               ? commandParts.get(1)
               : valueOf(event.getMessageAuthor().getId());
       final User user = event.getApi().getUserById(userId).get();
+      final String creationAccountDiscord =
+          ofInstant(user.getCreationTimestamp(), systemDefault())
+              .format(ofPattern("dd/MM/yy 'às' HH:mm"));
 
       final var embed =
           new EmbedBuilder()
@@ -36,11 +43,23 @@ public class UserInfoCommandListener extends AbstractMessageCommand {
               .addField("ID", valueOf(user.getId()), false)
               .addField("Usuário", user.getName(), false)
               .addField("É bot?", user.isBot() ? "Sim" : "Não", false)
-              .addField("Status", valueOf(user.getStatus()), false);
+              .addField("Status", getStatusString(user.getStatus()), false)
+              .addField("Entrou no Discord em", creationAccountDiscord, false);
 
       event.getChannel().sendMessage(embed);
     } catch (final Exception exception) {
       log.debug(exception.getLocalizedMessage(), exception);
     }
+  }
+
+  private String getStatusString(final UserStatus status) {
+    return switch (status) {
+      case ONLINE -> "Online";
+      case IDLE -> "Ausente";
+      case DO_NOT_DISTURB -> "Não Perturbar";
+      case INVISIBLE -> "Invisível";
+      case OFFLINE -> "Offline";
+      default -> "Desconhecido";
+    };
   }
 }
