@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/user")
 public class DiscordBotController {
 
   private final DiscordApi discordApi;
 
-  @GetMapping("/data")
+  @GetMapping("/")
+  public String getStatusAPI() {
+    return "OK";
+  }
+
+  @GetMapping("/user/data")
   public HashMap<String, Object> getUserInfo(@RequestParam(value = "userId") Long userId) {
     final HashMap<String, Object> response = new LinkedHashMap<>();
     try {
