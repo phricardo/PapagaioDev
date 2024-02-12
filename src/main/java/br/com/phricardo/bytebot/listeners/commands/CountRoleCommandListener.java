@@ -1,5 +1,7 @@
 package br.com.phricardo.bytebot.listeners.commands;
 
+import static java.lang.String.format;
+
 import java.util.List;
 import org.javacord.api.entity.permission.Role;
 import org.javacord.api.event.message.MessageCreateEvent;
@@ -28,10 +30,10 @@ public class CountRoleCommandListener extends AbstractMessageCommand {
   }
 
   private void handleRoleFound(final MessageCreateEvent event, final Role role) {
-    long memberCount = role.getUsers().size();
-    event
-        .getChannel()
-        .sendMessage("A role " + role.getName() + " tem " + memberCount + " membros.");
+    final var memberCount = role.getUsers().size();
+    final var pluralForm = memberCount > 1 ? "usuários" : "usuário";
+    final var message = format("A role %s tem %d %s.", role.getName(), memberCount, pluralForm);
+    event.getChannel().sendMessage(message);
   }
 
   private void handleRoleNotFound(final MessageCreateEvent event, final String roleId) {
