@@ -1,6 +1,7 @@
 package br.com.phricardo.bytebot.listeners.commands;
 
 import static br.com.phricardo.bytebot.utils.Constants.CUSTOM_COLOR;
+import static java.lang.String.format;
 import static java.lang.String.valueOf;
 import static java.time.LocalDateTime.ofInstant;
 import static java.time.ZoneId.systemDefault;
@@ -12,11 +13,15 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.entity.user.UserStatus;
 import org.javacord.api.event.message.MessageCreateEvent;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class UserInfoCommandListener extends AbstractMessageCommand {
+
+  @Value("${discord.bot.baseApi}")
+  private String BASE_URL_HTTP_API;
 
   public UserInfoCommandListener() {
     super("userInfo");
@@ -34,6 +39,8 @@ public class UserInfoCommandListener extends AbstractMessageCommand {
       final String creationAccountDiscord =
           ofInstant(user.getCreationTimestamp(), systemDefault())
               .format(ofPattern("dd/MM/yy 'às' HH:mm"));
+      final String linkUserAPI =
+          format("[Acessar API Restful](%s/user/data?userId=%s)", BASE_URL_HTTP_API, user.getId());
 
       final var embed =
           new EmbedBuilder()
@@ -44,6 +51,7 @@ public class UserInfoCommandListener extends AbstractMessageCommand {
               .addField("Usuário", user.getName(), false)
               .addField("É bot?", user.isBot() ? "Sim" : "Não", false)
               .addField("Status", getStatusString(user.getStatus()), false)
+              .addField("Obtenha em JSON com minha API", linkUserAPI)
               .addField("Entrou no Discord em", creationAccountDiscord, false);
 
       event.getChannel().sendMessage(embed);
