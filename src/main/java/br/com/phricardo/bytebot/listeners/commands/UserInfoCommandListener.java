@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserInfoCommandListener extends AbstractMessageCommand {
 
-  @Value("${discord.bot.baseApi}")
+  @Value("${discord.bot.api}")
   private String BASE_URL_HTTP_API;
 
   public UserInfoCommandListener() {
