@@ -1,0 +1,46 @@
+package br.com.phricardo.bytebot.listeners.commands;
+
+import static br.com.phricardo.bytebot.utils.Constants.CUSTOM_COLOR;
+import static java.lang.String.valueOf;
+
+import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
+import org.javacord.api.entity.user.User;
+import org.javacord.api.event.message.MessageCreateEvent;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Component
+public class UserInfoCommandListener extends AbstractMessageCommand {
+
+  public UserInfoCommandListener() {
+    super("userInfo");
+  }
+
+  @Override
+  protected void execute(final MessageCreateEvent event, List<String> commandParts) {
+    try {
+      final String command = commandParts.get(0);
+      final String userId =
+          commandParts.size() == 2
+              ? commandParts.get(1)
+              : valueOf(event.getMessageAuthor().getId());
+      final User user = event.getApi().getUserById(userId).get();
+
+      final var embed =
+          new EmbedBuilder()
+              .setAuthor(user)
+              .setColor(CUSTOM_COLOR)
+              .setThumbnail(user.getAvatar())
+              .addField("ID", valueOf(user.getId()), false)
+              .addField("Usuário", user.getName(), false)
+              .addField("É bot?", user.isBot() ? "Sim" : "Não", false)
+              .addField("Status", valueOf(user.getStatus()), false);
+
+      event.getChannel().sendMessage(embed);
+    } catch (final Exception exception) {
+      log.debug(exception.getLocalizedMessage(), exception);
+    }
+  }
+}
