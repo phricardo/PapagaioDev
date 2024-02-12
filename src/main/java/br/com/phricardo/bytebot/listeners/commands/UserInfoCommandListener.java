@@ -49,7 +49,7 @@ public class UserInfoCommandListener extends AbstractMessageCommand {
               .addField("Usuário", user.getName(), false)
               .addField("É bot?", user.isBot() ? "Sim" : "Não", false)
               .addField("Status", getStatusString(user.getStatus()), false)
-              .addField("Obtenha em JSON com minha API", linkUserAPI)
+              .addField("Obter dados em JSON", linkUserAPI)
               .addField("Entrou no Discord em", creationAccountDiscord, false);
 
       event.getChannel().sendMessage(embed);
