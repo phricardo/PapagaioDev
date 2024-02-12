@@ -20,14 +20,15 @@ public abstract class AbstractMessageCommand implements MessageCreateListener {
   @Override
   public void onMessageCreate(final MessageCreateEvent event) {
     final String messageContent = event.getMessageContent();
-    final String prefixCommand = format("%s%s", prefix, command);
-    final Boolean isValidCommand = (Boolean) messageContent.startsWith(prefixCommand);
+    final String cmdInput = messageContent.split(" ")[0];
+    final boolean isValidCmd = cmdInput.equals(format("%s%s", prefix, command));
+
     final List<String> commandParts =
         stream(messageContent.split("\\s+"))
             .map(part -> part.replaceAll(commandPartsRegex, ""))
             .toList();
 
-    if (isValidCommand) this.execute(event, commandParts);
+    if (isValidCmd) this.execute(event, commandParts);
   }
 
   protected abstract void execute(final MessageCreateEvent event, List<String> commandParts);
