@@ -16,7 +16,8 @@
 	<properties>
 		<java.version>19</java.version>
 		<fmt-maven-plugin.version>2.19</fmt-maven-plugin.version>
-		<javacord-version>3.8.0</javacord-version>
+		<javacord.version>3.8.0</javacord.version>
+		<jackson-core.version>2.16.1</jackson-core.version>
 	</properties>
 	<dependencies>
 		<!--    Spring    -->
@@ -37,7 +38,7 @@
 		<dependency>
 			<groupId>org.javacord</groupId>
 			<artifactId>javacord</artifactId>
-			<version>${javacord-version}</version>
+			<version>${javacord.version}</version>
 			<type>pom</type>
 		</dependency>
 		<!--    Lombok    -->
@@ -45,6 +46,12 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<!--    Jackson    -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-core.version}</version>
 		</dependency>
 	</dependencies>
 
