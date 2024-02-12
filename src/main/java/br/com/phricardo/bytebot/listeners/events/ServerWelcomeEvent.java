@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ServerWelcomeEvent {
 
-  private static final long serverWelcomeChannelId = 968360066396856373L;
+  private static final long serverWelcomeChannelId = 1199662058103394315L;
 
   public void execute(final ServerMemberJoinEvent event) {
     final var server = event.getServer();
