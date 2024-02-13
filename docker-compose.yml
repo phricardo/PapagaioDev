@@ -1,12 +1,10 @@
 version: "3"
 services:
-  byte-bot:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: byte-bot
+  mongo:
+    image: mongo
     restart: always
     ports:
-      - "8080:8080"
+      - "27017:27017"
     environment:
-      SPRING_PROFILES_ACTIVE: prod
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: admin

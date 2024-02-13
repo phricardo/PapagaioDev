@@ -53,6 +53,11 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson-core.version}</version>
 		</dependency>
+		<!--    Mongo DB    -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
