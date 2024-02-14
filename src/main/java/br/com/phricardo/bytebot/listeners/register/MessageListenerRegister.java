@@ -20,6 +20,7 @@ public class MessageListenerRegister {
   private final BotInfoCommandListener botInfoCommandListener;
   private final CountRoleCommandListener countRoleCommandListener;
   private final UserInfoCommandListener userInfoCommandListener;
+  private final GitCommandListener gitCommandListener;
 
   @Bean
   public DiscordApi register() {
@@ -28,6 +29,7 @@ public class MessageListenerRegister {
     discordApi.addListener(botInfoCommandListener);
     discordApi.addListener(countRoleCommandListener);
     discordApi.addListener(userInfoCommandListener);
+    discordApi.addListener(gitCommandListener);
     return discordApi;
   }
 }
