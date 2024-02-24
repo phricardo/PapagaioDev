@@ -25,7 +25,7 @@ public class DiscordBotController {
     final HashMap<String, Object> response = new LinkedHashMap<>();
     try {
       final User user = discordApi.getUserById(userId).get();
-      response.put("isOnline", user.getStatus().getStatusString().equals("online"));
+      response.put("isOnline", user.getStatus().getStatusString().equals("online") || user.getStatus().getStatusString().equals("dnd"));
       response.put("avatar", user.getAvatar().getUrl().toString());
       response.put("status", user.getStatus().getStatusString().toUpperCase());
     } catch (final Exception exception) {
