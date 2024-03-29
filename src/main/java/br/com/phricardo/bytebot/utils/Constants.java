@@ -4,5 +4,5 @@ import java.awt.*;
 
 public class Constants {
 
-  public static final Color CUSTOM_COLOR = new Color(27, 30, 226); // #1b1ee2
+  public static final Color CUSTOM_COLOR = new Color(49, 99, 53); // #316335
 }
