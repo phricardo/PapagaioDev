@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 public class ActivityStatusService {
 
   private final DiscordApi discordApi;
-  private final String[] activityTexts = {"phricardo.com.br", "@phricardorj", "Java"};
-  private final ActivityType[] activityTypes = {LISTENING, STREAMING, WATCHING};
+  private final String[] activityTexts = {"Se Depende, logo Dev Senior!", "O Terror do Stackoverflow", "Java? Depende!"};
+  private final ActivityType[] activityTypes = {STREAMING, WATCHING, LISTENING};
 
   @Bean
   public DiscordApi setActivity() {
