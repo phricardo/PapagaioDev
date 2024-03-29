@@ -1,5 +1,6 @@
-# ![Logo BotByte Image](/.github/BYTEBOT.png "ByteBot")
+# PapagaioDev
 
+![image](https://github.com/phricardorj/ByteBot/assets/70300680/dca4e96f-882a-40ff-b943-0534476026d4)
 
 ### Docs
 
